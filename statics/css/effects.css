@@ -1,0 +1,481 @@
+:root {
+    /* Glitch Effect Colors */
+    --ink: currentColor;
+    --ink-2: #FF4FD8;
+    --ink-3: #4FF8FF;
+}
+
+/* Floating Card Effect */
+.side-card, .project-card {
+    animation: cardFloat 5s ease-in-out infinite;
+    backdrop-filter: blur(3vw);
+    transform-style: preserve-3d;
+}
+
+@keyframes cardFloat {
+    0%,
+    100% {
+        transform: translateY(0) rotateX(0) rotateY(0)
+    }
+    50% {
+        transform: translateY(-12px) rotateX(1deg) rotateY(-1deg)
+    }
+}
+
+/* Card Light Sweep Effect */
+.side-card::before, .project-card::before {
+    animation: lightSweep 5s linear infinite;
+    pointer-events: none;
+    transform: rotate(-8deg);
+}
+
+@keyframes lightSweep {
+    0% {
+        transform: translateX(-70%) rotate(-8deg)
+    }
+    100% {
+        transform: translateX(70%) rotate(-8deg)
+    }
+}
+
+.edge-shine {
+    position: absolute;
+    inset: -50%;
+
+    background:
+        linear-gradient(
+            115deg,
+            rgb(var(--shadow)) 40%,
+            rgb(var(--grey)) 50%,
+            rgb(var(--softblack)) 60%
+        );
+    pointer-events: none;
+
+    animation: shine-loop 4s linear infinite 0s running;
+    -webkit-animation: shine-loop 4s linear infinite 0s running;
+
+    z-index: 10;
+}
+
+@keyframes shine-loop {
+    0% {
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+    }
+    100% {
+        transform: translate(50%, 50%);
+        -webkit-transform: translate(50%, 50%);
+    }
+}
+
+/* Avatar Pulsing Effect */
+.avatar {
+    animation: avatarPulse 3s ease-in-out infinite;
+    -webkit-animation: avatarPulse 3s ease-in-out infinite;
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+    will-change: transform, box-shadow;
+    transform-style: preserve-3d;
+}
+
+@keyframes avatarPulse {
+    0%,
+    100% {
+        transform: scale(1)
+    }
+    50% {
+        transform: scale(1.05)
+    }
+}
+
+.glow {
+    opacity: .1;
+
+    background: radial-gradient(
+        circle at 50% 0%,
+        var(--silver),
+        transparent
+        );
+
+    mix-blend-mode: hard-light;
+    transition: background 0.1s ease-out;
+    -webkit-transition: background 0.1s ease-out;
+
+    z-index: 2;
+}
+
+/* Avatar Foil Effect */
+.shine {
+    opacity: .1;
+    background-image: 
+        linear-gradient(
+            -45deg,
+            var(--red),
+            var(--blue-lagoon)
+        ),
+        var(--glitter),
+        linear-gradient(
+            -30deg,
+            rgb(var(--red)),
+            rgb(var(--orange)),
+            rgb(var(--green)),
+            rgb(var(--blue-lagoon)),
+            rgb(var(--blue-lagoon)),
+            rgb(var(--soft-black)),
+            rgb(var(--purple)),
+            rgb(var(--red)),
+            rgb(var(--orange)),
+            rgb(var(--green)),
+            rgb(var(--blue-lagoon)),
+            rgb(var(--blue-lagoon)),
+            rgb(var(--soft-black)),
+            rgb(var(--purple)),
+            rgb(var(--red)),
+            rgb(var(--orange)),
+            rgb(var(--green)),
+            rgb(var(--blue-lagoon)),
+            rgb(var(--blue-lagoon)),
+            rgb(var(--soft-black)),
+            rgb(var(--purple)),
+            rgb(var(--red))
+        );
+    background-blend-mode: luminosity, soft-light;
+    background-size: 
+        200% 200%,
+        var(--glittersize) var(--glittersize),
+        400% 400%;
+    background-position: 
+        calc(25% + (50% * var(--pointer-from-left))) calc(25% + (50% * var(--pointer-from-top))),
+        center center,
+        calc(25% + (var(--pointer-x) / 2)) calc(25% + (var(--pointer-y) / 2));
+
+    filter: brightness(calc((var(--pointer-from-center)*0.25) + 0.6)) contrast(2.2) saturate(0.75);
+    mix-blend-mode: color-dodge;
+
+    z-index: 3;
+}
+  
+.shine::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-image: 
+        var(--glitter),
+        linear-gradient(
+            -60deg,
+            rgb(var(--red)),
+            rgb(var(--orange)),
+            rgb(var(--green)),
+            rgb(var(--blue-lagoon)),
+            rgb(var(--blue-lagoon)),
+            rgb(var(--soft-black)),
+            rgb(var(--purple)), 
+            rgb(var(--red)),
+            rgb(var(--orange)),
+            rgb(var(--green)),
+            rgb(var(--blue-lagoon)),
+            rgb(var(--blue-lagoon)),
+            rgb(var(--soft-black)),
+            rgb(var(--purple)),
+            rgb(var(--red)),
+            rgb(var(--orange)),
+            rgb(var(--green)),
+            rgb(var(--blue-lagoon)),
+            rgb(var(--blue-lagoon)),
+            rgb(var(--soft-black)),
+            rgb(var(--purple)), 
+            rgb(var(--red))
+        );
+    background-blend-mode: soft-light;
+    background-size:
+        var(--glittersize) var(--glittersize),
+        400% 400%;
+    background-position:
+        center center,
+        var(--pointer-x) var(--pointer-y);
+
+    filter: brightness(calc((var(--pointer-from-center)*0.3) + 0.55)) contrast(2) saturate(1);
+    mix-blend-mode: overlay;
+}
+
+.foil-container {
+    position: absolute;
+    inset: 0;
+
+    height: 100%;
+    width: 100%;
+
+    pointer-events: none;
+    overflow: hidden;
+
+    border-radius: 25px;
+
+    mask-image: url("/statics/images/mask.png");
+    mask-size: cover;
+    mask-repeat: no-repeat;
+    mask-position: center;
+
+    -webkit-mask-image: url("/statics/images/mask.png");
+    -webkit-mask-size: cover;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+
+    z-index: 2;
+}
+
+.foil-img {
+    position: absolute;
+    inset: 0;
+    object-fit: cover;
+
+    height: 100%;
+    width: 100%;
+
+    opacity: 0;
+    
+    filter: brightness(3.5) contrast(1);
+    transition: opacity 0.2s ease-out;
+    -webkit-transition: opacity 0.2s ease-out;
+    mix-blend-mode: overlay;
+}
+
+.glare {
+    background-image: 
+        radial-gradient( 
+            farthest-corner circle at var(--pointer-x) var(--pointer-y), 
+            rgb(var(--thingrey)),
+            rgba(var(--smoothygrey), 0.25) 30%,
+            rgb(var(--hardgrey)) 120%
+        );
+
+    opacity: calc(var(--pointer-from-center) * 0.4);
+
+    filter: brightness(.9) contrast(1.75);
+    mix-blend-mode: overlay;
+
+    z-index: 4;
+}
+
+.glow,
+.shine,
+.glare,
+.card-edge-shine {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    border-radius: 25px;
+}
+
+.infos a::after {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(5px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    visibility: hidden;
+}
+
+.infos a:hover::after,
+.infos a:focus::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    visibility: visible;
+}
+
+/* Rotating Borders */
+
+/*.ring {
+    position: relative;
+
+    overflow: hidden;
+
+    animation: in 0.4s backwards;
+    -webkit-animation: in 0.4s backwards;
+
+    animation-delay: calc(sibling-index() * 60ms);
+    -webkit-animation-delay: calc(sibling-index() * 60ms);
+
+    transition: 0.2s;
+    -webkit-transition: 0.2s;
+
+    z-index: 7;
+}
+
+.ring::before {
+    content: "";
+
+    position: absolute;
+
+    padding: 0.7vw;
+
+    left: -50%;
+    top: -50%;
+
+    height: 200%;
+    width: 200%;
+
+    background:
+        conic-gradient(
+            transparent,
+            transparent,
+            transparent,
+            rgba(var(--smoothypink), 0.2)
+        );
+
+    animation: rotate 3s linear infinite;
+    -webkit-animation: rotate 3s linear infinite;
+
+    z-index: 8;
+}
+
+.ring::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0.3vw;
+
+    height: calc(100% - 0.6vw);
+    width: calc(100% - 0.6vw);
+
+    border-radius: inherit;
+    background: rgb(var(--brightwhite));
+
+    transition: 0.2s;
+    -webkit-transition: 0.2s;
+
+    z-index: 9;
+}*/
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.ring2::after {
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle), transparent, rgba(var(--white), .5), transparent);
+    animation: 1s spin linear infinite;
+    z-index: 10;
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+    to {
+        --angle: 360deg;
+    }
+}
+
+/* Glitch Effects */
+.light-dot {
+    box-sizing: border-box;
+    display: flex;
+    position: relative;
+
+    height: var(--glitch-layout-height) !important;
+    width: var(--glitch-layout-width) !important;
+    min-height: var(--glitch-layout-height) !important;
+
+    color: transparent !important;
+    font-size: clamp(2.5rem, 4.5vw, 3.5rem) !important;
+    line-height: inherit !important;
+
+    background: transparent !important;
+    box-shadow: none !important;
+
+    overflow: visible !important;
+
+    animation: none !important;
+}
+
+.light-dot::before {
+    content: "";
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 10px;
+    height: 10px;
+
+    color: rgb(var(--hardshadow)) !important;
+
+    background: rgb(var(--hardshadow)) !important;
+    box-shadow:
+        0 0 10px rgb(var(--hardshadow)),
+        0 0 20px rgb(var(--darkpurple)),
+        0 0 40px rgb(var(--darkpurple)),
+        0 0 80px rgb(var(--darkpurple)) !important;
+
+    border-radius: 50% !important;
+    overflow: hidden;
+
+    animation: light-dot 900ms ease-out both !important;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes light-dot {
+    0%, 35% { opacity: 1; transform: scale(.65); }
+    65% { opacity: 1; transform: scale(1.35); }
+    100% { opacity: .9; transform: scale(1); }
+}
+
+.unshrink-from-center {
+    opacity: 1 !important;
+    
+    clip-path: inset(100% 100%) !important;
+    -webkit-clip-path: inset(100% 100%) !important;
+    transition:
+        clip-path 0.5s cubic-bezier(0.7, 0, 0.3, 1)
+        -webkit-clip-path 0.5s cubic-bezier(0.7, 0, 0.3, 1) !important;
+}
+
+.glitch:not(.glitch-appear) {
+    opacity: 1 !important;
+ 
+    clip-path: none !important;
+    -webkit-clip-path: none !important;
+}
+
+.glitch.glitch-appear {
+    animation: hero-glitch-appear 200ms steps(1, end) both;
+    -webkit-animation: hero-glitch-appear 200ms steps(1, end) both;
+    transform-origin: center;
+}
+
+.glitch {
+    opacity: 1 !important;
+
+    clip-path: inset(0) !important;
+    -webkit-clip-path: inset(0) !important;
+}
+
+.glitch::before,
+.glitch::after {
+    align-self: end;
+
+    animation: glitch-effect steps(2, end) infinite;
+}
+
+.glitch::before {
+    animation-delay: 680ms;
+}
+
+.glitch::after {
+    animation-delay: 650ms;
+}
+
+@keyframes hero-glitch-appear {
+    0% { transform: scaleY(.01); }
+    20% { transform: scaleY(.35); }
+    38% { transform: scaleY(.7) translateX(-3px); }
+    55% { transform: scaleY(.88) translateX(3px); }
+    72% { transform: scaleY(1.03) translateX(-1px); }
+    100% { transform: scaleY(1); }
+}

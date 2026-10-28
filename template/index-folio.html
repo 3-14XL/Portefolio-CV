@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Concepteur / Développeur | Johann Maugis</title>
+    <link rel="stylesheet" href="./../statics/css/colors.css" />
+    <link rel="stylesheet" href="./../statics/css/core.css" />
+    <link rel="stylesheet" href="./../statics/css/effects.css" />
+    <link rel="stylesheet" href="./../statics/css/folio-styles.css" />
+    <link rel="stylesheet" href="./../statics/css/fonts.css" />
+    <link rel="stylesheet" href="./../statics/css/neuromorphism.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">&lt;Dev/&gt;</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#projects">Projets</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <p>Bonjour, je m'appelle</p>
+            <h1><span class="paper-title">Johann Maugis.</span><br><span class="glitch">Concepteur / Développeur d'applications.</span></h1>
+            <p class="hero-delayed-copy">Développeur fullstack en devenir, spécialisé dans la création d'expériences numériques exceptionnelles. Actuellement, je me concentre sur la construction de produits accessibles pour faciliter le quotidien.</p>
+            <div class="hero-actions">
+                <a href="#projects" class="btn-filled">Voir mes projets</a>
+                <a href="https://github.com/3-14XL" target="_blank" class="btn" style="margin-left: 1rem;"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </section>
+
+        <!-- About & Skills -->
+        <section id="about" class="section">
+            <h2 class="section-title">Compétences</h2>
+            <div class="skills-grid">
+                <div class="skill-item">JavaScript</div>
+                <div class="skill-item">React / Next.js</div>
+                <div class="skill-item">Node.js</div>
+                <div class="skill-item">TypeScript</div>
+                <div class="skill-item">Python</div>
+                <div class="skill-item">Git & GitHub</div>
+                <div class="skill-item">SQL / NoSQL</div>
+                <div class="skill-item">Docker</div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="section">
+            <h2 class="section-title">Projets Récents</h2>
+            <div class="projects-grid">
+                
+                <!-- Project 1 -->
+                <article class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-code project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">E-Commerce Dashboard</h3>
+                        <p class="project-desc">Une application de tableau de bord pour gérer les ventes et les inventaires en temps réel. Intègre des graphiques interactifs et une gestion d'utilisateurs.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Chart.js</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank" title="Code Source"><i class="fab fa-github link-icon" style="font-size: 1.5rem;"></i></a>
+                            <a href="#" target="_blank" title="Live Demo"><i class="fas fa-external-link-alt link-icon" style="font-size: 1.5rem;"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-card">
+                    <div class="project-image ring2">
+                        <i class="fas fa-mobile-alt project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Task Manager App</h3>
+                        <p class="project-desc">Application de gestion de tâches collaborative avec authentification JWT et mises à jour en temps réel via WebSockets.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Socket.io</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank" title="Code Source"><i class="fab fa-github link-icon" style="font-size: 1.5rem;"></i></a>
+                            <a href="#" target="_blank" title="Live Demo"><i class="fas fa-external-link-alt link-icon" style="font-size: 1.5rem;"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="project-card ring2">
+                    <div class="project-image">
+                        <i class="fas fa-cloud project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">API RESTful Weather</h3>
+                        <p class="project-desc">API robuste consommant des données météo externes, avec documentation Swagger et tests unitaires complets.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank" title="Code Source"><i class="fab fa-github link-icon" style="font-size: 1.5rem;"></i></a>
+                            <a href="#" target="_blank" title="Docs"><i class="fas fa-book link-icon" style="font-size: 1.5rem;"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="section" style="text-align: center; max-width: 600px; margin: 0 auto;">
+            <h2 class="section-title" style="margin: 0 auto 2rem auto;">Contactez-moi</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                Je suis actuellement à la recherche de nouvelles opportunités. Que vous ayez une question ou juste envie de dire bonjour, ma boîte de réception est toujours ouverte !
+            </p>
+            <a href="mailto:johann.maugis@gmail.com" class="btn-filled">Me contacter</a>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div>
+                <a href="https://github.com/" target="_blank"><i class="fab fa-github fa-lg"></i></a>
+                <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
+            </div>
+            <p>Conçu et développé par Johann Maugis &copy;2026</p>
+        </footer>
+    </div>
+
+    <script src="./../statics/js/folio-scripts.js"></script>
+    <script src="./../statics/js/hero-effects.js"></script>
+</body>
+</html>

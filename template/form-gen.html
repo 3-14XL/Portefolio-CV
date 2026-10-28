@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV : Formulaire</title>
+</head>
+<body>
+    <h1>Formulaire de CV</h1>
+    <form action="/Users/pxl/CV/form.html" method="POST">
+        <div>
+            <h2>Données personnelles</h2>
+
+            <label for="name">Nom :</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Téléphone :</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="address">Adresse :</label>
+            <textarea id="address" name="address" rows="4" required></textarea>
+
+            <label for="dob">Date de naissance :</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="job">Poste visé :</label>
+            <input type="text" id="job" name="job" required>
+        </div>
+        <div>
+            <h2>Expériences professionnelles</h2>
+        
+            <label for="experience">Expérience professionnelle :</label>
+            <input type="text" id="experience" placeholder="Intitulé du poste, entreprise, durée">
+
+            <button type="button" id="addExperience">Ajouter une expérience</button>
+
+            <div id="experienceList"></div>
+        </div>
+
+        <div>
+            <h2>Certifications</h2>
+        
+            <label for="certification">Certification :</label>
+            <input type="text" id="certification" placeholder="Nom de la certification, organisme, année">
+
+            <button type="button" id="addCertification">Ajouter une certification</button>
+
+            <div id="certificationList"></div>
+       </div>
+                
+        <div>
+            <h2>Formations</h2>
+        
+            <label for="formation">Formation :</label>
+            <input type="text" id="formation" placeholder="Nom de la formation, établissement, année">
+
+            <button type="button" id="addFormation">Ajouter une formation</button>
+
+            <div id="formationList"></div>
+        </div>
+        
+        <div>
+            <h2>Soft Skills</h2>
+        
+            <label for="softSkill">Compétence :</label>
+            <input type="text" id="softSkill" placeholder="Exemple : Communication, Leadership">
+
+            <button type="button" id="addSoftSkill">Ajouter une compétence</button>
+
+            <div id="softSkillList"></div>
+        </div>
+
+        <div>
+            <h2>Hard Skills</h2>
+        
+            <label for="hardSkill">Compétence technique :</label>
+            <input type="text" id="hardSkill" placeholder="Exemple : Programmation, Analyse de données">
+
+            <button type="button" id="addHardSkill">Ajouter une compétence</button>
+
+            <div id="hardSkillList"></div>
+        </div>
+
+        <div>
+            <h2>Centres d'intérêt</h2>
+
+            <label for="interest">Centre d'intérêt :</label>
+            <input type="text" id="interest" placeholder="Exemple : Lecture, Voyage, Sport">
+
+            <button type="button" id="addInterest">Ajouter un centre d'intérêt</button>
+
+            <div id="interestList"></div>
+        </div>
+
+        <script>
+            // Fonction générique pour gérer l'ajout et la suppression de champs
+            function setupDynamicFields(buttonId, containerId, inputId) {
+
+                // Vérifier si les éléments HTML existent
+                const button = document.getElementById(buttonId);
+                const container = document.getElementById(containerId);
+                const inputField = document.getElementById(inputId);
+                const value = inputField.value.trim(); // Récupérer la valeur du champ de texte et supprimer les espaces inutiles
+
+                if (!button || !container || !inputField) {
+                    console.error("Un ou plusieurs éléments HTML sont introuvables. Vérifiez les IDs.");
+                    return;
+                }
+
+                // Ajouter un événement au bouton pour ajouter un champ
+                button.addEventListener('click', function () {
+                    const value = inputField.value.trim(); // Récupérer la valeur du champ de texte et supprimer les espaces inutiles
+
+                    if (value === "") {
+                        alert("Veuillez remplir le champ avant d'ajouter."); // Vérification si le champ est vide
+                        return;
+                    }
+
+                   // Créer un nouveau champ avec la valeur saisie
+                    const newField = document.createElement('div');
+                    newField.style.display = 'flex'; // Alignement horizontal des éléments
+                    newField.style.alignItems = 'center'; // Centrage vertical des éléments
+                    newField.style.marginBottom = '10px'; // Espacement entre les champs
+                    newField.innerHTML = `
+                        <p name="${inputId}" style="flex: 1; margin-right: 10px;">${value}</p>
+                        <button type="button" class="removeField">Supprimer</button>
+                    `;
+                    container.appendChild(newField);
+
+                    // Ajouter un événement pour supprimer le champ
+                    newField.querySelector('.removeField').addEventListener('click', function () {
+                        container.removeChild(newField);
+                    });
+
+                    // Réinitialiser le champ de texte après l'ajout
+                    inputField.value = "";
+                });
+            }
+
+            // Configuration des champs dynamiques pour chaque section
+            setupDynamicFields('addExperience', 'experienceList', 'experience', 'Intitulé du poste, entreprise, durée');
+            setupDynamicFields('addCertification', 'certificationList', 'certifications', 'Nom de la certification, organisme, année');
+            setupDynamicFields('addFormation', 'formationList', 'formations', 'Nom de la formation, établissement, année');
+            setupDynamicFields('addSoftSkill', 'softSkillList', 'softSkills', 'Exemple : Communication, Leadership');
+            setupDynamicFields('addHardSkill', 'hardSkillList', 'hardSkills', 'Exemple : Programmation, Analyse de données');
+            setupDynamicFields('addInterest', 'interestList', 'interests', 'Exemple : Lecture, Voyage, Sport');
+        </script>
+
+        <button type="submit">Générer le CV</button>
+    </form>
+</body>
+</html>

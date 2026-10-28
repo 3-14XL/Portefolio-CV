@@ -1,0 +1,115 @@
+:root {
+    /* Common Colors */
+    --black: 0, 0, 0;
+    --white: 255, 255, 255;
+
+    --darkblue: 48, 57, 67;
+    --deeperblue: 36, 162, 215;
+
+    --darkpurple: 40, 15, 42;
+    
+    --golden: 110, 95, 37;
+    --goldenrod: 218, 165, 32;
+    
+    --hotpink: 255, 105, 180;
+    --smoothypink: 195, 63, 129;
+    
+    --brightwhite: 245, 245, 245;
+    --softwhite: 231, 235, 240;
+    --thinwhite: 221, 225, 230;
+    --silver: 192, 192, 192;
+
+    /* Effects Colors  */
+    --red: 148, 41, 41;
+    --orange: 152, 117, 47;
+    --green: 89, 143, 36;
+    --bluelagoon: 36, 143, 143;
+    --softblack: 4, 5, 6;
+    --purple: 94, 36, 123;
+    --grey: 125, 125, 125;
+    --thingrey:204, 204, 204;
+    --smoothygrey:213, 220, 221;
+    --hardgrey:60, 65, 68;
+
+    /* Light Mode Colors */
+    --bg-color: var(--softwhite);
+    --bg-color-buble: var(--darkpurple);
+    --bg-color-image: var(--golden);
+    --card-bg: var(--brightwhite);
+
+    --text-primary: var(--black);
+    --text-secondary: var(--darkpurple);
+    --text-thirdary: var(--darkblue);
+    --text-buble: var(--softwhite);
+
+    --title-primary: var(--brightwhite);
+    --title-secondary: var(--golden);
+    --title-thirdary: var(--darkpurple);
+
+    --item-primary: var(--golden);
+    --item-secondary: var(--darkpurple);
+    --item-thirdary: var(--softwhite);
+
+    --hardlight: var(--white);
+    --hardshadow: var(--black);
+    --light: var(--thinwhite);
+    --shadow: var(--silver);
+}
+
+/* Dark Mode Colors */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: var(--darkpurple);
+        --bg-color-buble: var(--softwhite);
+        --card-bg: var(--brightwhite);
+
+        --text-primary: var(--white);
+        --text-secondary: var(--smoothypink);
+        --text-thirdary: var(--softwhite);
+        --text-buble: var(--darkblue);
+
+        --title-primary: var(--darkpurple);
+        --title-secondary: var(--softwhite);
+        --title-thirdary: var(--softwhite);
+
+        --item-primary: var(--softwhite);
+        --item-secondary: var(--softwhite);
+        --item-thirdary: var(--darkpurple);
+
+        --hardlight: var(--black);
+        --hardshadow: var(--white);
+        --light: var(--silver);
+        --shadow: var(--thinwhite);
+    }
+}
+
+/* Accessibility & Contrast */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Print Mode */
+@media print {
+    @page {
+        size: 210mm 600mm;
+
+        margin: 0;
+    }
+
+    body {
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    * {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+}

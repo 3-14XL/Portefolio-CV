@@ -1,0 +1,35 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+
+    height: 100vh;
+    width: 100%;
+
+    align-items: center;
+    justify-content:flex-start;
+
+    background: rgb(var(--bg-color));
+
+    color: rgb(var(--text-primary));
+    font-family: var(--font-main);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+
+    transition: color 0.3s ease;
+}
+
+ul {
+    list-style: none;
+}
