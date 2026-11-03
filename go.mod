@@ -1,3 +1,3 @@
-module github.com/3-14XL/Portefolio-CV.git
+module github.com/3-14XL/Portefolio-CV
 
-go 1.26.2
+go 1.22

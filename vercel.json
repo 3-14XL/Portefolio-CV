@@ -1,0 +1,15 @@
+{
+    "rewrites": [
+      { "source": "/", "destination": "/template/index-folio.html" },
+      { "source": "/form", "destination": "/template/form.html" }
+    ],
+    "headers": [
+      {
+        "source": "/statics/(.*)",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=3600" }
+        ]
+      }
+    ]
+  }
+  
