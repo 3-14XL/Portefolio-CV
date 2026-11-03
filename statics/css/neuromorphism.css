@@ -39,8 +39,7 @@ ul.timeline li::before {
 }
 
 .dates,
-.btn,
-.skill-item {
+.btn {
     box-shadow:
         inset 5px 5px 10px rgba(var(--shadow), 0.6),
         inset -5px -5px 10px rgba(var(--hardlight), 0.9);

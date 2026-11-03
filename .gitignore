@@ -1,3 +1,21 @@
+# GIT
+.gitignore
+
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Specific
+gallerie/
+old/
 test/
 roadmap.md

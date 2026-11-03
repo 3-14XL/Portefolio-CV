@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const node = walker.currentNode;
         if (node.parentElement.closest(".hero > p, .logo")) continue;
         const font = getComputedStyle(node.parentElement).fontFamily.toLowerCase();
-        if (/monospace|jetbrains mono|fira code/.test(font)) textNodes.push(node);
+        if (/monospace|jetbrains mono|fira code/.test(font) && !".skill-item") textNodes.push(node);
     }
 
     textNodes.forEach((node, index) => {

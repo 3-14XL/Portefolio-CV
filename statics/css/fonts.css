@@ -7,10 +7,18 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Glitch';
+    src: url('./../fonts/Doctor Glitch.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
     --font-main: 'Inter', system-ui, -apple-system, sans-serif;
     --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
     --font-title: 'Italico', sans-serif;
+    --font-glitch: 'Glitch', sans-serif;
 }
 
 .typing-cursor {

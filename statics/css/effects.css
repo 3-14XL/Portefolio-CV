@@ -5,7 +5,10 @@
     --ink-3: #4FF8FF;
 }
 
-/* Floating Card Effect */
+/*******************
+ * Floating effect *
+ *******************/
+
 .side-card, .project-card {
     animation: cardFloat 5s ease-in-out infinite;
     backdrop-filter: blur(3vw);
@@ -22,7 +25,10 @@
     }
 }
 
-/* Card Light Sweep Effect */
+/**********************
+ * Light Sweep effect *
+ **********************/
+
 .side-card::before, .project-card::before {
     animation: lightSweep 5s linear infinite;
     pointer-events: none;
@@ -68,7 +74,10 @@
     }
 }
 
-/* Avatar Pulsing Effect */
+/****************
+ * Pulse Effect *
+ ****************/
+
 .avatar {
     animation: avatarPulse 3s ease-in-out infinite;
     -webkit-animation: avatarPulse 3s ease-in-out infinite;
@@ -103,8 +112,11 @@
     z-index: 2;
 }
 
-/* Avatar Foil Effect */
-.shine {
+/***************
+ * Foil Effect *
+ ***************/
+
+ .shine {
     opacity: .1;
     background-image: 
         linear-gradient(
@@ -284,7 +296,9 @@
     visibility: visible;
 }
 
-/* Rotating Borders */
+/**************************
+ * Rotating Border effect *
+ **************************/
 
 /*.ring {
     position: relative;
@@ -358,7 +372,11 @@
 .ring2::after {
     height: 100%;
     width: 100%;
-    background-image: conic-gradient(from var(--angle), transparent, rgba(var(--white), .5), transparent);
+    background-image:
+        conic-gradient(from var(--angle),
+        transparent,
+        rgba(var(--white), .5),
+        transparent);
     animation: 1s spin linear infinite;
     z-index: 10;
 }
@@ -372,7 +390,10 @@
     }
 }
 
-/* Glitch Effects */
+/*****************
+ * Glitch effect *
+ *****************/
+
 .light-dot {
     box-sizing: border-box;
     display: flex;
@@ -478,4 +499,73 @@
     55% { transform: scaleY(.88) translateX(3px); }
     72% { transform: scaleY(1.03) translateX(-1px); }
     100% { transform: scaleY(1); }
+}
+
+/****************
+ * Stomp effect *
+ ****************/
+
+.skill-item {
+    animation: stomp .1s forwards, fadeIn .3s ease forwards;
+    -webkit-animation: stomp .1s forwards, fadeIn .3s ease forwards;
+    transition: none;
+    -webkit-transition: none;
+}
+
+@keyframes stomp {
+    from {
+        box-shadow:
+            inset 5px 5px 10px rgba(var(--shadow), 0.6),
+            inset -5px -5px 10px rgba(var(--hardlight), 0.9);
+    }
+    to {
+        box-shadow:
+            inset 5px 5px 10px rgba(var(--shadow), 0.6),
+            inset -5px -5px 10px rgba(var(--hardlight), 0.9);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+    25% {
+        opacity: 0.25;
+        transform: translateX(-5px);
+        visibility: visible;
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateX(5px);
+        visibility: visible;
+    }
+    75% {
+        opacity: 0.75;
+        transform: translateX(-5px);
+        visibility: visible;
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.skill-item span {
+    display: inline-block;
+    animation: shake .1s ease;
+    -webkit-animation: shake .1s ease;
+    opacity: 1;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    10% { transform: translateX(-10px) rotate(-5deg); }
+    25% { transform: translateX(10px) rotate(-5deg) scale(1.1); }
+    40% { transform: translateX(-10px) rotate(5deg) scale(1.2); }
+    50% { transform: translateX(10px) rotate(-5deg) scale(1.3); }
+    60% { transform: translateX(-10px) rotate(5deg) scale(1.2); }
+    75% { transform: translateX(10px) rotate(-5deg) scale(1.1); }
+    90% { transform: translateX(-10px) rotate(-5deg); }
+    100% { transform: translateX(0); }
 }

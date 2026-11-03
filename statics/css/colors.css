@@ -3,21 +3,28 @@
     --black: 0, 0, 0;
     --white: 255, 255, 255;
 
-    --darkblue: 48, 57, 67;
-    --deeperblue: 36, 162, 215;
-
     --darkpurple: 40, 15, 42;
+    --deeperpurple: 72, 20, 75;
     
-    --golden: 110, 95, 37;
-    --goldenrod: 218, 165, 32;
-    
-    --hotpink: 255, 105, 180;
-    --smoothypink: 195, 63, 129;
+    --darkgolden: 110, 95, 37;
+    --lightgolden: 218, 165, 32;
     
     --brightwhite: 245, 245, 245;
     --softwhite: 231, 235, 240;
     --thinwhite: 221, 225, 230;
     --silver: 192, 192, 192;
+
+/*
+    --aubergine: 98, 23, 184;
+    --darkblue: 48, 57, 67;
+    --deeperblue: 36, 162, 215;
+    --goldenrod: 218, 165, 32;
+    --hotpink: 255, 105, 180;
+    --smoothypink: 195, 63, 129;
+    color: rgb(110, 95, 37);
+    color: rgb(163, 157, 100);
+    color: rgb(72, 20, 75);
+*/
 
     /* Effects Colors  */
     --red: 148, 41, 41;
@@ -34,7 +41,7 @@
     /* Light Mode Colors */
     --bg-color: var(--softwhite);
     --bg-color-buble: var(--darkpurple);
-    --bg-color-image: var(--golden);
+    --bg-color-image: var(--darkgolden);
     --card-bg: var(--brightwhite);
 
     --text-primary: var(--black);
@@ -43,10 +50,10 @@
     --text-buble: var(--softwhite);
 
     --title-primary: var(--brightwhite);
-    --title-secondary: var(--golden);
+    --title-secondary: var(--darkgolden);
     --title-thirdary: var(--darkpurple);
 
-    --item-primary: var(--golden);
+    --item-primary: var(--darkgolden);
     --item-secondary: var(--darkpurple);
     --item-thirdary: var(--softwhite);
 
@@ -54,6 +61,12 @@
     --hardshadow: var(--black);
     --light: var(--thinwhite);
     --shadow: var(--silver);
+
+    /* Project Cards Colors */
+
+    --tg-ink: rgb(var(--darkpurple));
+    --tg-accent: rgb(var(--lightgolden));
+    --tg-muted: rgba(var(--text-primary), .6);
 }
 
 /* Dark Mode Colors */
@@ -68,7 +81,7 @@
         --text-thirdary: var(--softwhite);
         --text-buble: var(--darkblue);
 
-        --title-primary: var(--darkpurple);
+        --title-primary: var(--deeperpurple);
         --title-secondary: var(--softwhite);
         --title-thirdary: var(--softwhite);
 

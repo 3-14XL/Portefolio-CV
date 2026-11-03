@@ -20,7 +20,7 @@ header {
     top: 0;
     left: 0;
     width: 90%;
-    padding: 2rem 0;
+    padding: 2rem 0 1rem 0;
 
     background: rgb(var(--bg-color));
 
@@ -185,6 +185,7 @@ nav a:hover {
     font-family: var(--font-title);
     font-size: clamp(2.5rem, 4.5vw, 3.5rem);
     letter-spacing: .25rem;
+    line-height: 1.1;
     text-shadow: none;
 }
 
@@ -215,6 +216,7 @@ nav a:hover {
     color: rgb(var(--text-primary));
     font-family: var(--font-mono);
     font-size: 1.25rem;
+    line-height: 1.8;
     text-justify: distribute;
 }
 
@@ -260,13 +262,13 @@ nav a:hover {
 
 /* Skills Section */
 .section {
-    padding: 5rem 0;
+    padding: 3rem 0 2rem 0;
 }
 
 .section-title {
     display: inline-block;
     position: relative;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
 
     font-size: 2rem;
 }
@@ -304,11 +306,10 @@ nav a:hover {
     font-size: 0.9rem;
     text-align: center;
 
-    transition: border-color 0.3s;
-}
+    opacity: 0;
+    visibility: hidden;
 
-.skill-item:hover {
-    border-color: rgb(var(--item-secondary));
+    transition: border-color 0.3s;
 }
 
 /* Projects Section */
@@ -360,14 +361,14 @@ nav a:hover {
     height: 200px;
 
     background:
-        rgb(var(--goldenrod))
+        rgb(var(--lightgolden))
         linear-gradient(
             135deg,
-            rgb(var(--goldenrod)),
-            rgba(var(--golden), .5),
-            rgba(var(--golden), .7),
-            rgba(var(--golden), .9),
-            rgb(var(--golden))
+            rgb(var(--lightgolden)),
+            rgba(var(--darkgolden), .5),
+            rgba(var(--darkgolden), .7),
+            rgba(var(--darkgolden), .9),
+            rgb(var(--darkgolden))
         );
 
     color: rgb(var(--text-secondary));

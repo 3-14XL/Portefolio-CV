@@ -1,0 +1,331 @@
+/* Galerie 3D de la section Projets */
+
+.tg {
+    position: relative;
+
+    width: 100%;
+    height: clamp(540px, 85vh, 720px);
+    height: clamp(540px, 85svh, 720px);
+
+    border-radius: 12px;
+    outline: none;
+    overflow: hidden;
+
+    cursor: grab;
+    touch-action: pan-y;                          /* la page peut défiler verticalement au doigt */
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.tg.dragging {
+    cursor: grabbing;
+}
+
+.tg:focus-visible {
+    outline: 2px solid rgb(var(--item-secondary));
+    outline-offset: 4px;
+}
+
+/* Scène 3D : la perspective est posée sur le parent des cartes */
+.tg-scene {
+    position: absolute;
+    inset: 0;
+
+    perspective: 1400px;
+    perspective-origin: 50% 45%;
+}
+.tg-stage {
+    position: absolute;
+
+    height: 0;
+    width: 0;
+
+    left: 50%;
+    top: 45%;
+
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+.tg-card {
+    position: absolute;
+
+    height: var(--tg-h);
+    width: var(--tg-w);
+
+    left: calc(var(--tg-w) / -2);
+    top: calc(var(--tg-h) / -2);
+
+    cursor: pointer;
+    transform-style: preserve-3d;
+}
+
+.tg-face {
+    position: absolute;
+    inset: 0;
+
+    border-radius: 12px;
+    opacity: var(--o, 1);
+    overflow: hidden;
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.tg-front {
+    display: flex;
+    flex-direction: column;
+
+    background-color: rgb(var(--card-bg));
+    border: 1px solid rgba(var(--white), .8);
+    box-shadow:
+        10px 10px 24px rgba(var(--shadow), .55),
+        -10px -10px 24px rgba(var(--light), .95),
+        inset 1px 1px 2px rgba(var(--light), .9);
+
+    color: var(--tg-ink);
+}
+.tg-back {
+    background-color: rgb(var(--card-bg));
+    border: 1px solid rgba(var(--white), .8);
+
+    transform: rotateY(180deg);
+}
+
+.tg-card.active .tg-front {
+    outline: 2px solid var(--tg-accent);
+    outline-offset: 3px;
+}
+
+/* Contenu des cartes : mêmes classes que les anciennes .project-card */
+.tg .project-image {
+    flex: none;
+
+    height: 130px;
+}
+.tg .project-content {
+    flex: 1;
+
+    min-height: 0;
+    padding: 1.1rem 1.2rem;
+}
+.tg .project-title {
+    color: var(--tg-ink);
+    font-size: 1.15rem;
+    line-height: 1.3;
+}
+.tg .project-desc {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+
+    margin-bottom: .8rem;
+
+    line-clamp: 5;
+    -webkit-line-clamp: 5;
+    opacity: .82;
+    overflow: hidden;
+
+    color: var(--tg-ink);
+    font-size: .88rem;
+    line-height: 1.5;
+}
+.tg .tech-stack { margin-bottom: 1rem; }
+.tg .project-links i { font-size: 1.5rem; }
+.tg .project-links a {                            /* zone cliquable d'au moins 32 px, même avant le chargement de l'icône */
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 32px;
+    min-width: 32px;
+}
+.tg .link-icon {
+    color: var(--tg-ink);
+}
+
+.tg .link-icon:hover {
+    color: var(--tg-accent);
+}
+
+/* Seule la carte active a des liens cliquables : une autre carte ne fait que passer devant */
+.tg-card:not(.active) a {
+    pointer-events: none;
+}
+
+.tg a:focus-visible {
+    border-radius: 4px;
+    outline: 2px solid var(--tg-accent);
+    outline-offset: 3px;
+}
+
+/* Légende animée */
+.tg-caption {
+    position: absolute;
+
+    bottom: 88px;
+    left: 0;
+    right: 0;
+
+    padding: 0 1rem;
+
+    pointer-events: none;
+
+    text-align: center;
+}
+.tg-title {
+    min-height: 1.3em;
+
+    color: rgb(var(--text-primary));
+    font-size: clamp(1.15rem, 3vw, 1.6rem);
+    font-weight: 650;
+    letter-spacing: -.01em;
+    line-height: 1.3;
+}
+.tg-sub {
+    margin-top: 4px;
+
+    color: var(--tg-muted);
+    font-size: .9rem;
+}
+/* Chaque lettre est dans un masque (overflow hidden) et glisse à la verticale */
+.tg-ch {
+    display: inline-block;
+    
+    vertical-align: top;
+    
+    margin-bottom: -.18em;
+    padding-bottom: .18em;                        /* laisse passer les jambages (g, p, y…) */
+
+    overflow: hidden;
+}
+.tg-ch-in {
+    display: inline-block;
+
+    will-change: transform;
+}
+.tg-sr {
+    position: absolute;
+
+    height: 1px;
+    width: 1px;
+
+    clip-path: inset(50%);
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* Commandes */
+.tg-controls {
+    display: flex;
+    gap: 14px;
+    position: absolute;
+
+    align-items: center;
+    justify-content: center;
+    
+    bottom: 24px;
+    left: 0;
+    right: 0;
+}
+.tg-controls button {
+    height: 44px;
+    width: 44px;
+
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+
+    background: rgb(var(--bg-color));
+    box-shadow:
+        3px 3px 6px rgba(var(--shadow), .6),
+        -3px -3px 6px rgba(var(--hardlight), .9);
+
+    color: rgb(var(--text-primary));
+    font-size: 18px;
+
+    transition: box-shadow .2s ease;
+}
+
+.tg-controls button:active {
+    box-shadow:
+        inset 3px 3px 6px rgba(var(--shadow), .6),
+        inset -3px -3px 6px rgba(var(--hardlight), .9);
+}
+
+.tg-controls button:focus-visible {
+    outline: 2px solid var(--tg-accent);
+    outline-offset: 2px;
+}
+
+.tg-counter {
+    display: flex;
+    gap: 6px;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 96px;
+
+    color: var(--tg-muted);
+    font-size: .9rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.tg-counter input {
+    width: 3.4ch;
+    padding: 5px 4px;
+
+    border: 0;
+    border-radius: 8px;
+    cursor: text;
+
+    background: transparent;
+    box-shadow:
+        inset 3px 3px 6px rgba(var(--shadow), .6),
+        inset -3px -3px 6px rgba(var(--hardlight), .9);
+
+    color: rgb(var(--text-primary));
+    font: inherit;
+    text-align: center;
+}
+
+.tg-counter input:focus-visible {
+    outline: 2px solid var(--tg-accent);
+    outline-offset: 2px;
+}
+
+.tg-hint {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 5px;
+
+    padding: 0 1rem;
+
+    pointer-events: none;
+
+    color: var(--tg-muted);
+    font-size: .8rem;
+    text-align: center;
+
+    animation: tg-hint-pulse 1s ease-in-out infinite;
+    -webkit-animation: tg-hint-pulse 1s ease-in-out infinite;
+}
+@keyframes tg-hint-pulse {
+    0%, 100% {
+        opacity: .4;
+        transform: scale(1);
+    }
+    45%, 55% {
+        opacity: .8;
+        transform: scale(1.05);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tg-hint {
+        animation: none;
+    }
+}
