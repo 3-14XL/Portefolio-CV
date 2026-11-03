@@ -422,7 +422,9 @@ func main() {
 	})
 
 	addr := ":8080"
-	if v := os.Getenv("ADDR"); v != "" {
+	if os.Getenv("VERCEL") == "1" {
+		addr = ":3000"
+	} else if v := os.Getenv("ADDR"); v != "" {
 		addr = v
 	}
 	srv := &http.Server{
